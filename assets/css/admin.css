@@ -1,0 +1,129 @@
+:root {
+  --bg: #f4f0e6;
+  --surface: #ffffff;
+  --line: #d9cfb7;
+  --text: #1a2537;
+  --soft: #5d6678;
+  --primary: #133126;
+  --accent: #b8965a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #ede6d6 0%, #f7f3e8 40%, #eef2f0 100%);
+  color: var(--text);
+}
+
+.admin {
+  min-height: 100vh;
+  padding: 2rem 0 3rem;
+}
+
+.admin__container {
+  width: min(1060px, 92%);
+  margin: 0 auto;
+}
+
+.admin__header h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+}
+
+.admin__header p {
+  margin-top: 0.5rem;
+  color: var(--soft);
+}
+
+.admin__form {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  padding: 1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.form-card h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+}
+
+label {
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  font: inherit;
+  border: 1px solid #c8bda4;
+  border-radius: 0.55rem;
+  padding: 0.62rem 0.72rem;
+  background: #fffdfa;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid rgba(184, 150, 90, 0.22);
+  border-color: var(--accent);
+}
+
+.admin__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.35rem;
+}
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.66rem 1.2rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.btn--primary {
+  background: var(--primary);
+  color: #f6f2e8;
+}
+
+.btn--secondary {
+  background: var(--accent);
+  color: #172133;
+}
+
+.btn--ghost {
+  border-color: #c4b89d;
+  color: var(--text);
+  background: transparent;
+}
+
+.status {
+  margin: 0.9rem 0 0;
+  min-height: 1.4rem;
+  color: #175c4f;
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .admin__form {
+    grid-template-columns: 1fr;
+  }
+}

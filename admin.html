@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | Md. Nur Nabi Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+</head>
+<body>
+  <main class="admin" aria-labelledby="admin-heading">
+    <div class="admin__container">
+      <header class="admin__header">
+        <h1 id="admin-heading">Portfolio Hero Admin Panel</h1>
+        <p>Update and manage the hero section content for Md. Nur Nabi.</p>
+      </header>
+
+      <form id="admin-form" class="admin__form">
+        <section class="form-card">
+          <h2>Core Identity</h2>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required />
+
+          <label for="title">Professional Title</label>
+          <input id="title" name="title" type="text" required />
+
+          <label for="location">Location</label>
+          <input id="location" name="location" type="text" required />
+
+          <label for="tagline">Main Tagline</label>
+          <input id="tagline" name="tagline" type="text" required />
+
+          <label for="dynamicLine">Dynamic Line Text</label>
+          <textarea id="dynamicLine" name="dynamicLine" rows="2" required></textarea>
+        </section>
+
+        <section class="form-card">
+          <h2>Description</h2>
+          <label for="intro">Intro Paragraph</label>
+          <textarea id="intro" name="intro" rows="5" required></textarea>
+
+          <label for="profileImage">Profile Image URL</label>
+          <input id="profileImage" name="profileImage" type="url" required />
+        </section>
+
+        <section class="form-card">
+          <h2>Buttons</h2>
+          <label for="publicationLabel">Publications Button Label</label>
+          <input id="publicationLabel" name="publicationLabel" type="text" required />
+
+          <label for="publicationLink">Publications Button Link</label>
+          <input id="publicationLink" name="publicationLink" type="url" />
+
+          <label for="cvLabel">CV Button Label</label>
+          <input id="cvLabel" name="cvLabel" type="text" required />
+
+          <label for="cvLink">CV Button Link</label>
+          <input id="cvLink" name="cvLink" type="url" />
+        </section>
+
+        <section class="form-card">
+          <h2>Social Links</h2>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+
+          <label for="linkedin">LinkedIn URL</label>
+          <input id="linkedin" name="linkedin" type="url" />
+
+          <label for="scholar">Google Scholar URL</label>
+          <input id="scholar" name="scholar" type="url" />
+
+          <label for="researchGate">ResearchGate URL</label>
+          <input id="researchGate" name="researchGate" type="url" />
+        </section>
+
+        <div class="admin__actions">
+          <button type="submit" class="btn btn--primary">Save / Update</button>
+          <button type="button" id="reset-btn" class="btn btn--secondary">Reset to Default</button>
+          <a href="index.html" class="btn btn--ghost">Back to Portfolio</a>
+        </div>
+      </form>
+
+      <p id="status" class="status" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <script src="assets/js/portfolio-data.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
