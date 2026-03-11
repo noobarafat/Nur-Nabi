@@ -1,90 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Panel | Md. Nur Nabi Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/admin.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Nur Nabi Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/admin.css">
 </head>
 <body>
-  <main class="admin" aria-labelledby="admin-heading">
-    <div class="admin__container">
-      <header class="admin__header">
-        <h1 id="admin-heading">Portfolio Hero Admin Panel</h1>
-        <p>Update and manage the hero section content for Md. Nur Nabi.</p>
-      </header>
+  <div class="admin__container">
+    <header class="admin__header">
+      <h1 class="admin__title">Portfolio Admin Panel</h1>
+      <p class="admin__subtitle">Edit your portfolio content in real-time</p>
+    </header>
 
+    <main class="admin__main">
       <form id="admin-form" class="admin__form">
-        <section class="form-card">
-          <h2>Core Identity</h2>
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" required />
+        
+        <!-- NAVBAR SECTION -->
+        <fieldset class="admin__fieldset">
+          <legend class="admin__legend">Navbar</legend>
+          
+          <div class="form-group">
+            <label for="input-navbar-logo" class="form-label">Logo / Site Name</label>
+            <input type="text" id="input-navbar-logo" class="form-input" placeholder="nur nabi.">
+          </div>
+        </fieldset>
 
-          <label for="title">Professional Title</label>
-          <input id="title" name="title" type="text" required />
+        <!-- HERO SECTION -->
+        <fieldset class="admin__fieldset">
+          <legend class="admin__legend">Hero Section</legend>
+          
+          <div class="form-group">
+            <label for="input-hero-location" class="form-label">Location</label>
+            <input type="text" id="input-hero-location" class="form-input" placeholder="e.g., Dhaka, Bangladesh">
+          </div>
 
-          <label for="location">Location</label>
-          <input id="location" name="location" type="text" required />
+          <div class="form-group">
+            <label for="input-hero-name" class="form-label">Full Name</label>
+            <input type="text" id="input-hero-name" class="form-input" placeholder="Nur Nabi">
+          </div>
 
-          <label for="tagline">Main Tagline</label>
-          <input id="tagline" name="tagline" type="text" required />
+          <div class="form-group">
+            <label for="input-hero-title" class="form-label">Title / Subtitle</label>
+            <input type="text" id="input-hero-title" class="form-input" placeholder="e.g., Historian">
+          </div>
 
-          <label for="dynamicLine">Dynamic Line Text</label>
-          <textarea id="dynamicLine" name="dynamicLine" rows="2" required></textarea>
-        </section>
+          <div class="form-group">
+            <label for="input-hero-mainline" class="form-label">Main Line (Short Bio)</label>
+            <input type="text" id="input-hero-mainline" class="form-input" placeholder="Brief headline about yourself">
+          </div>
 
-        <section class="form-card">
-          <h2>Description</h2>
-          <label for="intro">Intro Paragraph</label>
-          <textarea id="intro" name="intro" rows="5" required></textarea>
+          <div class="form-group">
+            <label for="input-hero-dynamic-items" class="form-label">Dynamic Text Items (one per line)</label>
+            <textarea id="input-hero-dynamic-items" class="form-textarea" placeholder="Line 1&#10;Line 2&#10;Line 3&#10;Line 4" rows="6"></textarea>
+            <small class="form-hint">Enter each rotating phrase on a new line</small>
+          </div>
 
-          <label for="profileImage">Profile Image URL</label>
-          <input id="profileImage" name="profileImage" type="url" required />
-        </section>
+          <div class="form-group">
+            <label for="input-hero-description" class="form-label">Description</label>
+            <textarea id="input-hero-description" class="form-textarea" placeholder="2-3 sentences describing yourself" rows="4"></textarea>
+          </div>
 
-        <section class="form-card">
-          <h2>Buttons</h2>
-          <label for="publicationLabel">Publications Button Label</label>
-          <input id="publicationLabel" name="publicationLabel" type="text" required />
+          <div class="form-group">
+            <label for="input-btn-publications-label" class="form-label">Publications Button Label</label>
+            <input type="text" id="input-btn-publications-label" class="form-input" placeholder="Publications">
+          </div>
 
-          <label for="publicationLink">Publications Button Link</label>
-          <input id="publicationLink" name="publicationLink" type="url" />
+          <div class="form-group">
+            <label for="input-btn-publications-link" class="form-label">Publications Button Link</label>
+            <input type="url" id="input-btn-publications-link" class="form-input" placeholder="https://scholar.google.com/...">
+          </div>
 
-          <label for="cvLabel">CV Button Label</label>
-          <input id="cvLabel" name="cvLabel" type="text" required />
+          <div class="form-group">
+            <label for="input-btn-cv-label" class="form-label">CV Button Label</label>
+            <input type="text" id="input-btn-cv-label" class="form-input" placeholder="CV">
+          </div>
 
-          <label for="cvLink">CV Button Link</label>
-          <input id="cvLink" name="cvLink" type="url" />
-        </section>
+          <div class="form-group">
+            <label for="input-btn-cv-link" class="form-label">CV Button Link</label>
+            <input type="url" id="input-btn-cv-link" class="form-input" placeholder="https://example.com/cv.pdf">
+          </div>
 
-        <section class="form-card">
-          <h2>Social Links</h2>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required />
+          <div class="form-group">
+            <label for="input-hero-profile-image" class="form-label">Profile Image Path</label>
+            <input type="text" id="input-hero-profile-image" class="form-input" placeholder="assets/photos/profile.png">
+          </div>
+        </fieldset>
 
-          <label for="linkedin">LinkedIn URL</label>
-          <input id="linkedin" name="linkedin" type="url" />
+        <!-- SOCIAL LINKS SECTION -->
+        <fieldset class="admin__fieldset">
+          <legend class="admin__legend">Social Links</legend>
+          
+          <div class="form-group">
+            <label for="input-social-email" class="form-label">Email Address</label>
+            <input type="email" id="input-social-email" class="form-input" placeholder="nurnabi.bs@cu.ac.bd">
+          </div>
 
-          <label for="scholar">Google Scholar URL</label>
-          <input id="scholar" name="scholar" type="url" />
+          <div class="form-group">
+            <label for="input-social-linkedin" class="form-label">LinkedIn URL</label>
+            <input type="url" id="input-social-linkedin" class="form-input" placeholder="https://linkedin.com/in/...">
+          </div>
 
-          <label for="researchGate">ResearchGate URL</label>
-          <input id="researchGate" name="researchGate" type="url" />
-        </section>
+          <div class="form-group">
+            <label for="input-social-scholar" class="form-label">Google Scholar URL</label>
+            <input type="url" id="input-social-scholar" class="form-input" placeholder="https://scholar.google.com/citations?user=...">
+          </div>
 
+          <div class="form-group">
+            <label for="input-social-researchgate" class="form-label">ResearchGate URL</label>
+            <input type="url" id="input-social-researchgate" class="form-input" placeholder="https://researchgate.net/profile/...">
+          </div>
+        </fieldset>
+
+        <!-- SECTIONS CONTENT -->
+        <fieldset class="admin__fieldset">
+          <legend class="admin__legend">Section Content</legend>
+          
+          <div class="form-group">
+            <label for="input-section-about" class="form-label">About Section</label>
+            <textarea id="input-section-about" class="form-textarea" placeholder="Write your about content here" rows="5"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="input-section-education" class="form-label">Education Section</label>
+            <textarea id="input-section-education" class="form-textarea" placeholder="List your education, degrees, institutions" rows="5"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="input-section-publications" class="form-label">Publications Section</label>
+            <textarea id="input-section-publications" class="form-textarea" placeholder="List your publications, papers, articles" rows="5"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="input-section-experience" class="form-label">Experience Section</label>
+            <textarea id="input-section-experience" class="form-textarea" placeholder="List your work experience, positions, roles" rows="5"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="input-section-skills" class="form-label">Skills Section</label>
+            <textarea id="input-section-skills" class="form-textarea" placeholder="List your skills, expertise areas, competencies" rows="5"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="input-section-events" class="form-label">Events Section</label>
+            <textarea id="input-section-events" class="form-textarea" placeholder="List upcoming or past events, talks, conferences" rows="5"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="input-section-contact" class="form-label">Contact Section</label>
+            <textarea id="input-section-contact" class="form-textarea" placeholder="Contact information or inquiry instructions" rows="5"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- FORM ACTIONS -->
         <div class="admin__actions">
-          <button type="submit" class="btn btn--primary">Save / Update</button>
-          <button type="button" id="reset-btn" class="btn btn--secondary">Reset to Default</button>
-          <a href="index.html" class="btn btn--ghost">Back to Portfolio</a>
+          <button type="submit" class="btn btn--primary">Save All Changes</button>
+          <button type="reset" class="btn btn--secondary">Reset Form</button>
+          <button type="button" id="btn-reset-defaults" class="btn btn--tertiary">Restore Defaults</button>
         </div>
-      </form>
 
-      <p id="status" class="status" aria-live="polite"></p>
-    </div>
-  </main>
+        <div id="save-status" class="admin__status"></div>
+      </form>
+    </main>
+
+    <footer class="admin__footer">
+      <a href="index.html" class="admin__link">Back to Portfolio</a>
+    </footer>
+  </div>
 
   <script src="assets/js/portfolio-data.js"></script>
   <script src="assets/js/admin.js"></script>

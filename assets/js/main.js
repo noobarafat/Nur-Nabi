@@ -2,70 +2,137 @@
   const store = window.PortfolioStore;
   if (!store) return;
 
-  const elements = {
-    name: document.getElementById("hero-name"),
-    title: document.getElementById("hero-title"),
-    location: document.getElementById("hero-location"),
-    tagline: document.getElementById("hero-tagline"),
-    intro: document.getElementById("hero-intro"),
-    dynamicLine: document.getElementById("dynamic-line"),
-    publicationsBtn: document.getElementById("btn-publications"),
-    cvBtn: document.getElementById("btn-cv"),
-    socialEmail: document.getElementById("social-email"),
-    socialLinkedIn: document.getElementById("social-linkedin"),
-    socialScholar: document.getElementById("social-scholar"),
-    socialResearchGate: document.getElementById("social-researchgate"),
-    profileImage: document.getElementById("profile-image")
+  // DOM Elements
+  const navbar = document.getElementById("navbar");
+  const navbarToggle = document.getElementById("navbar-toggle");
+  const navbarMenu = document.getElementById("navbar-menu");
+  const navbarLogo = document.getElementById("navbar-logo");
+  const navbarLinks = document.querySelectorAll(".navbar__link");
+
+  // Hero Elements
+  const heroLocation = document.getElementById("hero-location");
+  const heroName = document.getElementById("hero-name");
+  const heroTitle = document.getElementById("hero-title");
+  const heroMainline = document.getElementById("hero-mainline");
+  const dynamicLine = document.getElementById("dynamic-line");
+  const heroDescription = document.getElementById("hero-description");
+  const btnPublications = document.getElementById("btn-publications");
+  const btnCV = document.getElementById("btn-cv");
+  const socialEmail = document.getElementById("social-email");
+  const socialLinkedIn = document.getElementById("social-linkedin");
+  const socialScholar = document.getElementById("social-scholar");
+  const socialResearchGate = document.getElementById("social-researchgate");
+  const profileImage = document.getElementById("profile-image");
+
+  // Section Elements
+  const sectionContents = {
+    about: document.getElementById("about-content"),
+    education: document.getElementById("education-content"),
+    publications: document.getElementById("publications-content"),
+    experience: document.getElementById("experience-content"),
+    skills: document.getElementById("skills-content"),
+    events: document.getElementById("events-content"),
+    contact: document.getElementById("contact-content")
   };
 
-  function ensureLink(url) {
-    if (!url || url === "#") return "#";
-    return url;
-  }
-
-  function render(data) {
-    elements.name.textContent = data.name;
-    elements.title.textContent = data.title;
-    elements.location.textContent = data.location;
-    elements.tagline.textContent = data.tagline;
-    elements.intro.textContent = data.intro;
-
-    elements.publicationsBtn.textContent = data.buttons.publicationLabel;
-    elements.publicationsBtn.href = ensureLink(data.buttons.publicationLink);
-
-    elements.cvBtn.textContent = data.buttons.cvLabel;
-    elements.cvBtn.href = ensureLink(data.buttons.cvLink);
-
-    elements.socialEmail.href = `mailto:${data.socials.email}`;
-    elements.socialLinkedIn.href = ensureLink(data.socials.linkedin);
-    elements.socialScholar.href = ensureLink(data.socials.scholar);
-    elements.socialResearchGate.href = ensureLink(data.socials.researchGate);
-
-    elements.profileImage.src = data.profileImage;
-    elements.profileImage.alt = `Portrait of ${data.name}`;
-
-    startTyping(data.dynamicLine);
-  }
-
+  // Animation State
   let typingTimer = null;
+  let pauseTimer = null;
 
-  function startTyping(text) {
-    if (typingTimer) clearInterval(typingTimer);
+  // Navbar Toggle
+  navbarToggle.addEventListener("click", () => {
+    navbarMenu.classList.toggle("active");
+    navbarToggle.classList.toggle("active");
+  });
 
-    const content = text || "";
-    let index = 0;
-    elements.dynamicLine.textContent = "";
+  navbarLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navbarMenu.classList.remove("active");
+      navbarToggle.classList.remove("active");
+    });
+  });
 
-    typingTimer = setInterval(() => {
-      if (index <= content.length) {
-        elements.dynamicLine.textContent = content.slice(0, index);
-        index += 1;
-      } else {
-        clearInterval(typingTimer);
-        setTimeout(() => startTyping(content), 2200);
-      }
-    }, 50);
+  // Navbar Scroll Effect
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.style.borderColor = "rgba(107, 44, 63, 0.4)";
+    } else {
+      navbar.style.borderColor = "rgba(107, 44, 63, 0.25)";
+    }
+  });
+
+  // Dynamic Text Animation
+  function startRotatingTyping(items) {
+    if (typingTimer) window.clearInterval(typingTimer);
+    if (pauseTimer) window.clearTimeout(pauseTimer);
+
+    const queue = Array.isArray(items) && items.length ? items : [""];
+    let itemIndex = 0;
+
+    const typeOne = () => {
+      const content = queue[itemIndex];
+      let charIndex = 0;
+      dynamicLine.textContent = "";
+
+      typingTimer = window.setInterval(() => {
+        if (charIndex <= content.length) {
+          dynamicLine.textContent = content.slice(0, charIndex);
+          charIndex += 1;
+          return;
+        }
+
+        window.clearInterval(typingTimer);
+        pauseTimer = window.setTimeout(() => {
+          itemIndex = (itemIndex + 1) % queue.length;
+          typeOne();
+        }, 1500);
+      }, 50);
+    };
+
+    typeOne();
   }
 
+  // Render Data
+  function render(data) {
+    // Navbar
+    navbarLogo.textContent = data.navbar.logo;
+
+    const hero = data.hero;
+    heroLocation.textContent = hero.location;
+    heroName.textContent = hero.name;
+    heroTitle.textContent = hero.title;
+    heroMainline.textContent = hero.mainLine;
+    heroDescription.textContent = hero.description;
+
+    btnPublications.textContent = hero.buttons.publications.label;
+    btnPublications.href = hero.buttons.publications.link;
+
+    btnCV.textContent = hero.buttons.cv.label;
+    btnCV.href = hero.buttons.cv.link;
+
+    socialEmail.href = `mailto:${hero.socials.email}`;
+    socialLinkedIn.href = hero.socials.linkedin;
+    socialScholar.href = hero.socials.scholar;
+    socialResearchGate.href = hero.socials.researchGate;
+
+    profileImage.src = hero.profileImage;
+    profileImage.alt = hero.name;
+
+    startRotatingTyping(hero.dynamicItems);
+
+    // Sections
+    Object.keys(sectionContents).forEach(key => {
+      if (sectionContents[key]) {
+        sectionContents[key].textContent = data.sections[key];
+      }
+    });
+  }
+
+  // Initial Render
   render(store.getData());
+
+  // Listen for Portfolio Updates
+  window.addEventListener("portfolioUpdated", (event) => {
+    render(event.detail);
+  });
 })();
