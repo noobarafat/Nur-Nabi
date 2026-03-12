@@ -1,177 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel - Nur Nabi Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/admin.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio CMS | Md. Nur Nabi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
-  <div class="admin__container">
-    <header class="admin__header">
-      <h1 class="admin__title">Portfolio Admin Panel</h1>
-      <p class="admin__subtitle">Edit your portfolio content in real-time</p>
-    </header>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <h1>Portfolio CMS</h1>
+        <p>Md. Nur Nabi</p>
+      </div>
 
-    <main class="admin__main">
-      <form id="admin-form" class="admin__form">
-        
-        <!-- NAVBAR SECTION -->
-        <fieldset class="admin__fieldset">
-          <legend class="admin__legend">Navbar</legend>
-          
-          <div class="form-group">
-            <label for="input-navbar-logo" class="form-label">Logo / Site Name</label>
-            <input type="text" id="input-navbar-logo" class="form-input" placeholder="nur nabi.">
-          </div>
-        </fieldset>
+      <nav class="admin-nav" aria-label="Admin sections">
+        <button class="admin-nav__item is-active" data-target="general">General</button>
+        <button class="admin-nav__item" data-target="hero">Hero</button>
+        <button class="admin-nav__item" data-target="about">About</button>
+        <button class="admin-nav__item" data-target="education">Education</button>
+        <button class="admin-nav__item" data-target="publications">Publications</button>
+        <button class="admin-nav__item" data-target="memberships">Memberships</button>
+        <button class="admin-nav__item" data-target="achievements">Achievements</button>
+        <button class="admin-nav__item" data-target="leadership">Leadership & Interests</button>
+        <button class="admin-nav__item" data-target="contact">Contact</button>
+        <button class="admin-nav__item" data-target="settings">Settings</button>
+      </nav>
 
-        <!-- HERO SECTION -->
-        <fieldset class="admin__fieldset">
-          <legend class="admin__legend">Hero Section</legend>
-          
-          <div class="form-group">
-            <label for="input-hero-location" class="form-label">Location</label>
-            <input type="text" id="input-hero-location" class="form-input" placeholder="e.g., Dhaka, Bangladesh">
-          </div>
+      <a class="admin-back" href="index.html">← Back to Site</a>
+    </aside>
 
-          <div class="form-group">
-            <label for="input-hero-name" class="form-label">Full Name</label>
-            <input type="text" id="input-hero-name" class="form-input" placeholder="Nur Nabi">
-          </div>
+    <main class="admin-main">
+      <header class="admin-main__header">
+        <h2 id="panel-title">General</h2>
+        <p>Manage your live academic portfolio content with section-wise controls.</p>
+      </header>
 
-          <div class="form-group">
-            <label for="input-hero-title" class="form-label">Title / Subtitle</label>
-            <input type="text" id="input-hero-title" class="form-input" placeholder="e.g., Historian">
-          </div>
+      <section class="admin-panel is-active" data-panel="general"></section>
+      <section class="admin-panel" data-panel="hero"></section>
+      <section class="admin-panel" data-panel="about"></section>
+      <section class="admin-panel" data-panel="education"></section>
+      <section class="admin-panel" data-panel="publications"></section>
+      <section class="admin-panel" data-panel="memberships"></section>
+      <section class="admin-panel" data-panel="achievements"></section>
+      <section class="admin-panel" data-panel="leadership"></section>
+      <section class="admin-panel" data-panel="contact"></section>
+      <section class="admin-panel" data-panel="settings"></section>
 
-          <div class="form-group">
-            <label for="input-hero-mainline" class="form-label">Main Line (Short Bio)</label>
-            <input type="text" id="input-hero-mainline" class="form-input" placeholder="Brief headline about yourself">
-          </div>
-
-          <div class="form-group">
-            <label for="input-hero-dynamic-items" class="form-label">Dynamic Text Items (one per line)</label>
-            <textarea id="input-hero-dynamic-items" class="form-textarea" placeholder="Line 1&#10;Line 2&#10;Line 3&#10;Line 4" rows="6"></textarea>
-            <small class="form-hint">Enter each rotating phrase on a new line</small>
-          </div>
-
-          <div class="form-group">
-            <label for="input-hero-description" class="form-label">Description</label>
-            <textarea id="input-hero-description" class="form-textarea" placeholder="2-3 sentences describing yourself" rows="4"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="input-btn-publications-label" class="form-label">Publications Button Label</label>
-            <input type="text" id="input-btn-publications-label" class="form-input" placeholder="Publications">
-          </div>
-
-          <div class="form-group">
-            <label for="input-btn-publications-link" class="form-label">Publications Button Link</label>
-            <input type="url" id="input-btn-publications-link" class="form-input" placeholder="https://scholar.google.com/...">
-          </div>
-
-          <div class="form-group">
-            <label for="input-btn-cv-label" class="form-label">CV Button Label</label>
-            <input type="text" id="input-btn-cv-label" class="form-input" placeholder="CV">
-          </div>
-
-          <div class="form-group">
-            <label for="input-btn-cv-link" class="form-label">CV Button Link</label>
-            <input type="url" id="input-btn-cv-link" class="form-input" placeholder="https://example.com/cv.pdf">
-          </div>
-
-          <div class="form-group">
-            <label for="input-hero-profile-image" class="form-label">Profile Image Path</label>
-            <input type="text" id="input-hero-profile-image" class="form-input" placeholder="assets/photos/profile.png">
-          </div>
-        </fieldset>
-
-        <!-- SOCIAL LINKS SECTION -->
-        <fieldset class="admin__fieldset">
-          <legend class="admin__legend">Social Links</legend>
-          
-          <div class="form-group">
-            <label for="input-social-email" class="form-label">Email Address</label>
-            <input type="email" id="input-social-email" class="form-input" placeholder="nurnabi.bs@cu.ac.bd">
-          </div>
-
-          <div class="form-group">
-            <label for="input-social-linkedin" class="form-label">LinkedIn URL</label>
-            <input type="url" id="input-social-linkedin" class="form-input" placeholder="https://linkedin.com/in/...">
-          </div>
-
-          <div class="form-group">
-            <label for="input-social-scholar" class="form-label">Google Scholar URL</label>
-            <input type="url" id="input-social-scholar" class="form-input" placeholder="https://scholar.google.com/citations?user=...">
-          </div>
-
-          <div class="form-group">
-            <label for="input-social-researchgate" class="form-label">ResearchGate URL</label>
-            <input type="url" id="input-social-researchgate" class="form-input" placeholder="https://researchgate.net/profile/...">
-          </div>
-        </fieldset>
-
-        <!-- SECTIONS CONTENT -->
-        <fieldset class="admin__fieldset">
-          <legend class="admin__legend">Section Content</legend>
-          
-          <div class="form-group">
-            <label for="input-section-about" class="form-label">About Section</label>
-            <textarea id="input-section-about" class="form-textarea" placeholder="Write your about content here" rows="5"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="input-section-education" class="form-label">Education Section</label>
-            <textarea id="input-section-education" class="form-textarea" placeholder="List your education, degrees, institutions" rows="5"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="input-section-publications" class="form-label">Publications Section</label>
-            <textarea id="input-section-publications" class="form-textarea" placeholder="List your publications, papers, articles" rows="5"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="input-section-experience" class="form-label">Experience Section</label>
-            <textarea id="input-section-experience" class="form-textarea" placeholder="List your work experience, positions, roles" rows="5"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="input-section-skills" class="form-label">Skills Section</label>
-            <textarea id="input-section-skills" class="form-textarea" placeholder="List your skills, expertise areas, competencies" rows="5"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="input-section-events" class="form-label">Events Section</label>
-            <textarea id="input-section-events" class="form-textarea" placeholder="List upcoming or past events, talks, conferences" rows="5"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="input-section-contact" class="form-label">Contact Section</label>
-            <textarea id="input-section-contact" class="form-textarea" placeholder="Contact information or inquiry instructions" rows="5"></textarea>
-          </div>
-        </fieldset>
-
-        <!-- FORM ACTIONS -->
-        <div class="admin__actions">
-          <button type="submit" class="btn btn--primary">Save All Changes</button>
-          <button type="reset" class="btn btn--secondary">Reset Form</button>
-          <button type="button" id="btn-reset-defaults" class="btn btn--tertiary">Restore Defaults</button>
-        </div>
-
-        <div id="save-status" class="admin__status"></div>
-      </form>
+      <div class="status-toast" id="status-toast" role="status" aria-live="polite"></div>
     </main>
-
-    <footer class="admin__footer">
-      <a href="index.html" class="admin__link">Back to Portfolio</a>
-    </footer>
   </div>
 
-  <script src="assets/js/portfolio-data.js"></script>
-  <script src="assets/js/admin.js"></script>
+  <script src="data.js"></script>
+  <script src="admin.js"></script>
 </body>
 </html>

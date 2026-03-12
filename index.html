@@ -8,54 +8,43 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navigation -->
   <nav class="navbar" id="navbar">
-    <div class="navbar__container">
+    <div class="container navbar__container">
       <a href="#home" class="navbar__logo" id="navbar-logo">nur nabi.</a>
-      
+
       <button class="navbar__toggle" id="navbar-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
 
       <ul class="navbar__menu" id="navbar-menu">
-        <li class="navbar__item"><a href="#home" class="navbar__link" data-link="home">Home</a></li>
-        <li class="navbar__item"><a href="#about" class="navbar__link" data-link="about">About</a></li>
-        <li class="navbar__item"><a href="#education" class="navbar__link" data-link="education">Education</a></li>
-        <li class="navbar__item"><a href="#publications" class="navbar__link" data-link="publications">Publications</a></li>
-        <li class="navbar__item"><a href="#experience" class="navbar__link" data-link="experience">Experience</a></li>
-        <li class="navbar__item"><a href="#skills" class="navbar__link" data-link="skills">Memberships</a></li>
-        <li class="navbar__item"><a href="#events" class="navbar__link" data-link="events">Achievements</a></li>
-        <li class="navbar__item"><a href="#contact" class="navbar__link" data-link="contact">Contact</a></li>
+        <li><a href="#home" class="navbar__link" data-nav="home">Home</a></li>
+        <li><a href="#about" class="navbar__link" data-nav="about">About</a></li>
+        <li><a href="#education" class="navbar__link" data-nav="education">Education</a></li>
+        <li><a href="#publications" class="navbar__link" data-nav="publications">Publications</a></li>
+        <li><a href="#experience" class="navbar__link" data-nav="experience">Leadership</a></li>
+        <li><a href="#skills" class="navbar__link" data-nav="skills">Memberships</a></li>
+        <li><a href="#events" class="navbar__link" data-nav="events">Achievements</a></li>
+        <li><a href="#contact" class="navbar__link" data-nav="contact">Contact</a></li>
       </ul>
+
       <a href="admin.html" class="navbar__admin">Admin</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home" aria-labelledby="hero-name">
+  <header class="hero" id="home" aria-labelledby="hero-name">
     <div class="container">
       <div class="hero__grid">
         <div class="hero__content">
-          <p class="hero__location" id="hero-location">CHITTAGONG, BANGLADESH</p>
-          <h1 class="hero__name" id="hero-name">Md. Nur Nabi</h1>
-          <h2 class="hero__title" id="hero-title">Lecturer, Department of Bangladesh Studies, University of Chittagong</h2>
-          
+          <p class="hero__location" id="hero-location"></p>
+          <h1 class="hero__name" id="hero-name"></h1>
+          <h2 class="hero__title" id="hero-title"></h2>
           <div class="hero__accent"></div>
-          
-          <p class="hero__mainline" id="hero-mainline">Researcher in Bengal's History</p>
-          
-          <p class="hero__dynamic" aria-live="polite">
-            <span id="dynamic-line"></span><span class="hero__cursor" aria-hidden="true"></span>
-          </p>
-
-          <p class="hero__description" id="hero-description">
-            Historian, lecturer, and researcher focused on Bengal's socio-cultural, political, and intellectual history.
-          </p>
+          <p class="hero__mainline" id="hero-mainline"></p>
+          <p class="hero__dynamic" aria-live="polite"><span id="dynamic-line"></span><span class="hero__cursor" aria-hidden="true"></span></p>
+          <p class="hero__description" id="hero-description"></p>
 
           <div class="hero__cta">
             <a id="btn-publications" class="btn btn--primary" href="#publications">Publications</a>
@@ -63,10 +52,10 @@
           </div>
 
           <ul class="social-links">
-            <li><a id="social-email" href="mailto:nurnabi@example.com" class="social-link" aria-label="Email">Email</a></li>
-            <li><a id="social-linkedin" href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a></li>
-            <li><a id="social-scholar" href="#" class="social-link" aria-label="Google Scholar">Scholar</a></li>
-            <li><a id="social-researchgate" href="#" class="social-link" aria-label="ResearchGate">ResearchGate</a></li>
+            <li><a id="social-email" class="social-link" aria-label="Email">Email</a></li>
+            <li><a id="social-linkedin" class="social-link" aria-label="LinkedIn">LinkedIn</a></li>
+            <li><a id="social-scholar" class="social-link" aria-label="Google Scholar">Scholar</a></li>
+            <li><a id="social-researchgate" class="social-link" aria-label="ResearchGate">ResearchGate</a></li>
           </ul>
         </div>
 
@@ -75,320 +64,128 @@
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- About Section -->
-  <section class="section section--about" id="about">
+  <section class="section" id="about">
     <div class="container">
       <div class="section__header">
-        <h2 class="section__title">About Nur Nabi</h2>
+        <h2 class="section__title" id="about-title">About Nur Nabi</h2>
         <div class="section__accent"></div>
       </div>
-      <div class="about__grid" id="about-content">
-        <div class="about__card">
-          <h3 class="about__card-title">Lecturer</h3>
-          <p class="about__card-organization">Department of Bangladesh Studies, University of Chittagong</p>
-          <p class="about__card-date">05/10/2025 – Present</p>
-          <p class="about__card-description">Teaching and research in Bangladesh Studies with a focus on academic scholarship, critical inquiry, and higher education.</p>
-        </div>
-
-        <div class="about__card">
-          <h3 class="about__card-title">House Tutor</h3>
-          <p class="about__card-organization">Bijoy 24 Hall, University of Chittagong</p>
-          <p class="about__card-date">12/09/2025 – Present</p>
-          <p class="about__card-description">Supporting residential student engagement, academic discipline, and campus mentoring within the university hall environment.</p>
-        </div>
-
-        <div class="about__card">
-          <h3 class="about__card-title">Head of Department</h3>
-          <p class="about__card-organization">Islamic History and Culture, Ideal College, Dhanmondi, Dhaka</p>
-          <p class="about__card-date">12/09/2019 – 30/06/2025</p>
-          <p class="about__card-description">Led departmental academic planning, faculty coordination, student mentoring, and institutional responsibilities.</p>
-        </div>
-
-        <div class="about__card">
-          <h3 class="about__card-title">Lecturer</h3>
-          <p class="about__card-organization">Department of Islamic History and Culture, Ideal College, Dhanmondi, Dhaka</p>
-          <p class="about__card-date">01/08/2019 – 04/10/2025</p>
-          <p class="about__card-description">Delivered lectures and guided students through historical studies, analytical thinking, and subject-based learning.</p>
-        </div>
-
-        <div class="about__card">
-          <h3 class="about__card-title">Moderator</h3>
-          <p class="about__card-organization">Ideal College Debating Club, Ideal College, Dhanmondi, Dhaka</p>
-          <p class="about__card-date">08/02/2020 – 04/10/2025</p>
-          <p class="about__card-description">Mentored debate activities, student leadership, public speaking, and intellectual engagement beyond the classroom.</p>
-        </div>
-      </div>
+      <div class="card-grid card-grid--3" id="about-content"></div>
     </div>
   </section>
 
-  <!-- Education Section -->
-  <section class="section section--education" id="education">
+  <section class="section" id="education">
     <div class="container">
       <div class="section__header">
-        <h2 class="section__title">Education</h2>
+        <h2 class="section__title" id="education-title">Education</h2>
         <div class="section__accent"></div>
       </div>
-      <div class="education__timeline" id="education-content">
-        <div class="education__item">
-          <div class="education__marker"></div>
-          <div class="education__content">
-            <h3 class="education__degree">Master of Arts</h3>
-            <p class="education__department">Department of Islamic History and Culture</p>
-            <p class="education__institution">University of Dhaka</p>
-            <div class="education__details">
-              <p class="education__result">CGPA: <span class="education__result-value">3.94 / 4.00</span></p>
-              <p class="education__highlight">Highest score of the Department till today</p>
-              <p class="education__session">2013–2014</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="education__item">
-          <div class="education__marker"></div>
-          <div class="education__content">
-            <h3 class="education__degree">Bachelor of Arts</h3>
-            <p class="education__department">Department of Islamic History and Culture</p>
-            <p class="education__institution">University of Dhaka</p>
-            <div class="education__details">
-              <p class="education__result">CGPA: <span class="education__result-value">3.68 / 4.00</span></p>
-              <p class="education__highlight">2nd Highest score of the year</p>
-              <p class="education__session">2009–2010</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="education-grid" id="education-content"></div>
     </div>
   </section>
 
-  <!-- Publications Section -->
-  <section class="section section--publications" id="publications">
+  <section class="section" id="publications">
     <div class="container">
       <div class="section__header">
-        <h2 class="section__title">Publications</h2>
+        <h2 class="section__title" id="publications-title">Publications</h2>
         <div class="section__accent"></div>
       </div>
-      <p class="publications__subtitle">Research Articles & Books</p>
-
-      <div class="publications__summary" aria-label="Publications summary">
-        <div class="publications__summary-item">
-          <span class="publications__summary-label">Journal Articles</span>
-          <span class="publications__summary-value">5</span>
-        </div>
-        <div class="publications__summary-item">
-          <span class="publications__summary-label">Books</span>
-          <span class="publications__summary-value">3</span>
-        </div>
-      </div>
-
-      <div class="publications-grid" id="publications-content">
-        <article class="publication-card">
-          <div class="publication-card__top">
-            <span class="publication-badge publication-badge--journal">Journal Article</span>
-            <span class="publication-lang">In Bangla</span>
-          </div>
-          <h3 class="publication-title">Analysis of the Character of the Faraizi Movement in Bengal</h3>
-          <p class="publication-source">Itihas, Journal of Bangladesh Itihas Parishad</p>
-          <p class="publication-meta">Volume 50 · Pages 49–57</p>
-          <p class="publication-year">2017</p>
-        </article>
-
-        <article class="publication-card">
-          <div class="publication-card__top">
-            <span class="publication-badge publication-badge--journal">Journal Article</span>
-            <span class="publication-lang">In Bangla</span>
-          </div>
-          <h3 class="publication-title">The Evolution of Bengali Nationalism and the Formation of an Ethno-based Nation-State</h3>
-          <p class="publication-source">Journal of Sociology, University of Dhaka</p>
-          <p class="publication-meta">Volume 10 · Issue 2 · Pages 83–94</p>
-          <p class="publication-year">2019</p>
-        </article>
-
-        <article class="publication-card">
-          <div class="publication-card__top">
-            <span class="publication-badge publication-badge--journal">Journal Article</span>
-            <span class="publication-lang">In Bangla</span>
-          </div>
-          <h3 class="publication-title">The Progressive Movement and the Muslim Literary Society in 1930s Dhaka: A Review</h3>
-          <p class="publication-source">Itihas, Journal of Bangladesh Itihas Parishad</p>
-          <p class="publication-meta">Volume 55 · Pages 145–156</p>
-          <p class="publication-year">2024</p>
-        </article>
-
-        <article class="publication-card">
-          <div class="publication-card__top">
-            <span class="publication-badge publication-badge--accepted">Accepted Article</span>
-            <span class="publication-lang">In Bangla</span>
-          </div>
-          <h3 class="publication-title">The University of Dhaka in the 1962 Student Movement: An Analysis of Its Nature</h3>
-          <p class="publication-source">Itihas, Journal of Bangladesh Itihas Parishad</p>
-          <p class="publication-meta">Accepted for publishing</p>
-          <p class="publication-year">Status</p>
-        </article>
-
-        <article class="publication-card">
-          <div class="publication-card__top">
-            <span class="publication-badge publication-badge--submitted">Submitted Article</span>
-            <span class="publication-lang">In Bangla</span>
-          </div>
-          <h3 class="publication-title">Exploring the Nature of Historiography in Colonial Bengal: A Review of Charles Stewart’s History of Bengal</h3>
-          <p class="publication-source">The Chittagong University Journal of Arts and Humanities</p>
-          <p class="publication-meta">Submitted</p>
-          <p class="publication-year">Status</p>
-        </article>
-
-        <article class="publication-card">
-          <div class="publication-card__top">
-            <span class="publication-badge publication-badge--book">Book</span>
-          </div>
-          <h3 class="publication-title">Gopalpur Genocide</h3>
-          <p class="publication-source">Centre for Research on Genocide, Torture and the Liberation War, 1971: Genocide–Torture Archive and Museum Trust, Khulna</p>
-          <p class="publication-year">2017</p>
-        </article>
-
-        <article class="publication-card">
-          <div class="publication-card__top">
-            <span class="publication-badge publication-badge--book">Book</span>
-          </div>
-          <h3 class="publication-title">Bangabandhu and the Emergence of the Bengali Nation-State</h3>
-          <p class="publication-source">Tamralipi</p>
-          <p class="publication-meta">Included in the Bangabandhu Birth Centenary Book Series</p>
-          <p class="publication-year">2020</p>
-        </article>
-
-        <article class="publication-card">
-          <div class="publication-card__top">
-            <span class="publication-badge publication-badge--book">Book</span>
-          </div>
-          <h3 class="publication-title">Bangabandhu against Corruption: Speeches and Statements</h3>
-          <p class="publication-source">Tamralipi</p>
-          <p class="publication-meta">Authors: Abdul Bashir and Md. Nur Nabi</p>
-          <p class="publication-year">2022</p>
-        </article>
-      </div>
+      <p class="section__subtitle" id="publications-subtitle"></p>
+      <div class="summary-strip" id="publications-summary"></div>
+      <div class="publications-grid" id="publications-content"></div>
     </div>
   </section>
 
-
-  <!-- Memberships Section -->
-  <section class="section section--skills" id="skills">
+  <section class="section" id="skills">
     <div class="container">
       <div class="section__header">
-        <h2 class="section__title">Memberships</h2>
+        <h2 class="section__title" id="memberships-title">Memberships</h2>
         <div class="section__accent"></div>
       </div>
-      <p class="memberships__subtitle">Academic & Professional Affiliations</p>
-
-      <div class="membership-grid" id="skills-content">
-        <article class="membership-card">
-          <span class="membership-label">Membership</span>
-          <h3 class="membership-title">Life Member</h3>
-          <p class="membership-org">Bangladesh Itihas Parishad</p>
-        </article>
-
-        <article class="membership-card">
-          <span class="membership-label">Membership</span>
-          <h3 class="membership-title">Member</h3>
-          <p class="membership-org">Islamic History and Culture Alumni Association, University of Dhaka</p>
-        </article>
-
-        <article class="membership-card">
-          <span class="membership-label">Membership</span>
-          <h3 class="membership-title">Member</h3>
-          <p class="membership-org">Surjasen Hall Alumni Association, University of Dhaka</p>
-        </article>
-      </div>
+      <p class="section__subtitle" id="memberships-subtitle"></p>
+      <div class="membership-grid" id="memberships-content"></div>
     </div>
   </section>
 
-  <!-- Achievements Section -->
-  <section class="section section--events" id="events">
+  <section class="section" id="events">
     <div class="container">
       <div class="section__header">
-        <h2 class="section__title">Achievements & Certifications</h2>
+        <h2 class="section__title" id="achievements-title">Achievements & Certifications</h2>
         <div class="section__accent"></div>
       </div>
-      <p class="achievements__subtitle">Recognition, Training & Academic Distinction</p>
-
-      <div class="achievements__summary" aria-label="Recognition summary">
-        <div class="achievements__summary-item">
-          <span class="achievements__summary-label">Memberships</span>
-          <span class="achievements__summary-value">3</span>
-        </div>
-        <div class="achievements__summary-item">
-          <span class="achievements__summary-label">Certificates & Recognition</span>
-          <span class="achievements__summary-value">7</span>
-        </div>
-      </div>
-
-      <div class="achievements-grid" id="events-content">
-        <article class="achievement-card achievement-card--featured">
-          <span class="achievement-badge">Achievement</span>
-          <h3 class="achievement-title">Dean’s Certificate of Merit</h3>
-          <p class="achievement-institution">Faculty of Arts, University of Dhaka</p>
-        </article>
-
-        <article class="achievement-card">
-          <span class="achievement-badge">Certificate</span>
-          <h3 class="achievement-title">Certificate of Training Research</h3>
-          <p class="achievement-institution">Center for Advanced Research in Arts and Social Sciences (CARASS), University of Dhaka</p>
-        </article>
-
-        <article class="achievement-card">
-          <span class="achievement-badge">Certificate</span>
-          <h3 class="achievement-title">Certificate of Attendance</h3>
-          <p class="achievement-institution">Center for Research on Bangladesh Liberation War (CRBL)</p>
-        </article>
-
-        <article class="achievement-card">
-          <span class="achievement-badge">Certificate</span>
-          <h3 class="achievement-title">Certificate of Completion</h3>
-          <p class="achievement-program">ICT Education in Secondary & Higher Secondary Level Project (Phase-II)</p>
-          <p class="achievement-institution">Ministry of Education, Government of the People’s Republic of Bangladesh</p>
-        </article>
-
-        <article class="achievement-card">
-          <span class="achievement-badge">Certificate</span>
-          <h3 class="achievement-title">Certificate for Successfully Participating a Workshop</h3>
-          <p class="achievement-institution">National Academy for Planning and Development (NAPD), Ministry of Planning, Government of the People’s Republic of Bangladesh</p>
-        </article>
-
-        <article class="achievement-card">
-          <span class="achievement-badge">Certificate</span>
-          <h3 class="achievement-title">Certificate of Quantum Study</h3>
-          <p class="achievement-program">Quantum Method Course for Mind Development and Self Improvement</p>
-          <p class="achievement-institution">Yoga Foundation, Dhaka</p>
-        </article>
-
-        <article class="achievement-card">
-          <span class="achievement-badge">Certificate</span>
-          <h3 class="achievement-title">Certificate of Participation</h3>
-          <p class="achievement-program">Online HWPL Peace Education Training</p>
-          <p class="achievement-institution">HWPL</p>
-        </article>
-      </div>
+      <p class="section__subtitle" id="achievements-subtitle"></p>
+      <div class="summary-strip" id="achievements-summary"></div>
+      <div class="achievements-grid" id="achievements-content"></div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="section section--contact" id="contact">
+  <section class="section" id="experience">
     <div class="container">
-      <h2 class="section__title">Contact</h2>
-      <div class="section__content" id="contact-content">
-        <p>Contact information and form will be here.</p>
+      <div class="section__header">
+        <h2 class="section__title" id="leadership-title">Leadership & Interests</h2>
+        <div class="section__accent"></div>
+      </div>
+
+      <div class="leadership-layout">
+        <article class="panel" aria-labelledby="leadership-activities-title">
+          <h3 class="panel__title" id="leadership-activities-title"></h3>
+          <ul class="leadership-list" id="leadership-content"></ul>
+        </article>
+
+        <article class="panel" aria-labelledby="interests-title">
+          <h3 class="panel__title" id="interests-title"></h3>
+          <div class="interest-chip-wrap" id="interests-content"></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="contact-title">Contact</h2>
+        <div class="section__accent"></div>
+      </div>
+      <p class="section__subtitle" id="contact-subtitle">Get in Touch</p>
+
+      <div class="contact-layout">
+        <article class="panel" aria-labelledby="contact-intro-title">
+          <h3 class="panel__title" id="contact-intro-title"></h3>
+          <ul class="contact-list" id="contact-info-list"></ul>
+        </article>
+
+        <article class="panel" aria-labelledby="contact-form-title">
+          <h3 class="panel__title" id="contact-form-title"></h3>
+          <form class="contact-form" id="contact-form" novalidate>
+            <label class="field-label" for="contact-name">Full Name</label>
+            <input class="field-control" id="contact-name" name="name" type="text" required placeholder="Enter your full name" />
+
+            <label class="field-label" for="contact-email">Email Address</label>
+            <input class="field-control" id="contact-email" name="email" type="email" required placeholder="Enter your email address" />
+
+            <label class="field-label" for="contact-subject">Subject</label>
+            <input class="field-control" id="contact-subject" name="subject" type="text" required placeholder="Enter subject" />
+
+            <label class="field-label" for="contact-message">Message</label>
+            <textarea class="field-control field-control--textarea" id="contact-message" name="message" required placeholder="Write your message" rows="6"></textarea>
+
+            <button type="submit" class="btn btn--primary">Send Message</button>
+            <p class="form-status" id="contact-form-status" aria-live="polite"></p>
+          </form>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Md. Nur Nabi. All rights reserved.</p>
+      <p id="footer-text"></p>
     </div>
   </footer>
 
-  <script src="assets/js/portfolio-data.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
