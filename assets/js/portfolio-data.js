@@ -37,7 +37,7 @@
         scholar: "https://scholar.google.com/",
         researchGate: "https://www.researchgate.net/"
       },
-      profileImage: "Nur Nabi/assets/photos/profile.png"
+      profileImage: "assets/photos/profile.png"
     },
     sections: {
       about: "Add your about content here through the admin panel.",

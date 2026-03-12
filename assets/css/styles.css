@@ -354,6 +354,516 @@ body {
   max-width: 70ch;
 }
 
+.section__header {
+  margin-bottom: 3rem;
+}
+
+.section__accent {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-maroon) 0%, transparent 100%);
+  margin-top: 1.5rem;
+}
+
+/* About Section Cards */
+.about__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+.about__card {
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: rgba(26, 24, 21, 0.4);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.about__card:hover {
+  border-color: rgba(107, 44, 63, 0.5);
+  background: rgba(26, 24, 21, 0.8);
+  box-shadow: 0 8px 24px rgba(107, 44, 63, 0.15);
+  transform: translateY(-4px);
+}
+
+.about__card-title {
+  font-family: 'Merriweather', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.about__card-organization {
+  font-size: 0.95rem;
+  color: var(--accent-maroon);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.3px;
+}
+
+.about__card-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.2px;
+}
+
+.about__card-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  flex-grow: 1;
+}
+
+/* Education Timeline */
+.education__timeline {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  padding-left: 0;
+}
+
+.education__timeline::before {
+  display: none;
+}
+
+.education__item {
+  position: relative;
+  margin-bottom: 0;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.education__marker {
+  position: static;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-maroon);
+  border: 3px solid var(--bg-dark);
+  box-shadow: 0 0 0 1px var(--accent-maroon);
+  flex-shrink: 0;
+}
+
+.education__content {
+  width: 100%;
+  flex: 1;
+  padding: 1.8rem;
+  border-left: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: rgba(26, 24, 21, 0.4);
+  transition: var(--transition);
+}
+
+.education__content:hover {
+  border-left-color: var(--accent-maroon);
+  background: rgba(26, 24, 21, 0.8);
+  box-shadow: 0 4px 16px rgba(107, 44, 63, 0.15);
+  transform: translateX(3px);
+}
+
+.education__degree {
+  font-family: 'Merriweather', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.education__department {
+  font-size: 0.95rem;
+  color: var(--accent-maroon);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.3px;
+}
+
+.education__institution {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.education__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(107, 44, 63, 0.2);
+}
+
+.education__result {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin: 0;
+}
+
+.education__result-value {
+  color: var(--accent-maroon);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.education__highlight {
+  font-size: 0.85rem;
+  color: var(--accent-maroon);
+  font-weight: 600;
+  font-style: italic;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.education__session {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* Publications */
+.publications__subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.2px;
+}
+
+.publications__summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+}
+
+.publications__summary-item {
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: rgba(26, 24, 21, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.publications__summary-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.publications__summary-value {
+  color: var(--accent-maroon);
+  font-family: 'Merriweather', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.publications-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.publication-card {
+  background: rgba(26, 24, 21, 0.42);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 260px;
+  transition: var(--transition);
+}
+
+.publication-card:hover {
+  border-color: rgba(107, 44, 63, 0.65);
+  box-shadow: 0 10px 28px rgba(107, 44, 63, 0.2);
+  transform: translateY(-4px);
+}
+
+.publication-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.publication-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: 1px solid transparent;
+}
+
+.publication-badge--journal,
+.publication-badge--book {
+  color: var(--text-primary);
+  background: rgba(107, 44, 63, 0.25);
+  border-color: rgba(107, 44, 63, 0.45);
+}
+
+.publication-badge--accepted {
+  color: #e9d7bd;
+  background: rgba(128, 96, 32, 0.2);
+  border-color: rgba(201, 169, 127, 0.55);
+}
+
+.publication-badge--submitted {
+  color: #cfd3dc;
+  background: rgba(58, 65, 80, 0.24);
+  border-color: rgba(138, 146, 160, 0.45);
+}
+
+.publication-lang {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 500;
+}
+
+.publication-title {
+  font-family: 'Merriweather', serif;
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  line-height: 1.45;
+  font-weight: 700;
+  margin: 0;
+}
+
+.publication-source {
+  color: var(--accent-maroon);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.publication-meta {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.publication-year {
+  margin-top: auto;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Memberships */
+.memberships__subtitle {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  margin-bottom: 1.8rem;
+}
+
+.membership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.membership-card {
+  background: rgba(26, 24, 21, 0.42);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.4rem;
+  min-height: 205px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.8rem;
+  position: relative;
+  transition: var(--transition);
+}
+
+.membership-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-maroon), transparent 70%);
+  border-radius: 12px 12px 0 0;
+}
+
+.membership-card:hover {
+  border-color: rgba(107, 44, 63, 0.6);
+  box-shadow: 0 10px 26px rgba(107, 44, 63, 0.18);
+  transform: translateY(-4px);
+}
+
+.membership-label {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  color: var(--text-primary);
+  background: rgba(107, 44, 63, 0.24);
+  border: 1px solid rgba(107, 44, 63, 0.45);
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+.membership-title {
+  font-family: 'Merriweather', serif;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.membership-org {
+  margin: 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(107, 44, 63, 0.25);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Achievements */
+.achievements__subtitle {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  margin-bottom: 1.5rem;
+}
+
+.achievements__summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.achievements__summary-item {
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: rgba(26, 24, 21, 0.35);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.achievements__summary-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.achievements__summary-value {
+  color: var(--accent-maroon);
+  font-family: 'Merriweather', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+.achievement-card {
+  background: rgba(26, 24, 21, 0.42);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.4rem;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: var(--transition);
+  position: relative;
+}
+
+.achievement-card::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-maroon);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  opacity: 0.7;
+}
+
+.achievement-card:hover {
+  border-color: rgba(107, 44, 63, 0.6);
+  box-shadow: 0 10px 26px rgba(107, 44, 63, 0.2);
+  transform: translateY(-4px);
+}
+
+.achievement-card--featured {
+  border-color: rgba(107, 44, 63, 0.6);
+  box-shadow: 0 6px 22px rgba(107, 44, 63, 0.2);
+  background: linear-gradient(165deg, rgba(32, 24, 23, 0.75), rgba(26, 24, 21, 0.45));
+}
+
+.achievement-badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  color: var(--text-primary);
+  background: rgba(107, 44, 63, 0.24);
+  border: 1px solid rgba(107, 44, 63, 0.45);
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+.achievement-title {
+  margin: 0;
+  font-family: 'Merriweather', serif;
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  line-height: 1.45;
+}
+
+.achievement-program {
+  margin: 0;
+  color: var(--accent-maroon);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+.achievement-institution {
+  margin: 0;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(107, 44, 63, 0.25);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
 /* Footer */
 .footer {
   background: rgba(20, 18, 16, 0.8);
@@ -420,6 +930,30 @@ body {
     font-size: 0.85rem;
     padding: 0.4rem 0.8rem;
   }
+
+  .about__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .education__timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .publications-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .publication-card {
+    min-height: 240px;
+  }
+
+  .membership-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 480px) {
@@ -455,4 +989,89 @@ body {
   .section__title {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
   }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__card {
+    padding: 1.5rem;
+  }
+
+  .about__card-title {
+    font-size: 1.2rem;
+  }
+
+  .about__card-organization {
+    font-size: 0.9rem;
+  }
+
+  .about__card-description {
+    font-size: 0.9rem;
+  }
+
+  .education__marker {
+    width: 32px;
+    height: 32px;
+    border-width: 2px;
+  }
+
+  .education__content {
+    padding: 1.2rem;
+  }
+
+  .education__degree {
+    font-size: 1.2rem;
+  }
+
+  .education__department {
+    font-size: 0.9rem;
+  }
+
+  .education__timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .education__institution {
+    font-size: 0.85rem;
+  }
+
+  .publications__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .publications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .publication-card {
+    min-height: auto;
+    padding: 1.25rem;
+  }
+
+  .publication-title {
+    font-size: 1.05rem;
+  }
+
+  .membership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .membership-card {
+    min-height: auto;
+  }
+
+  .achievements__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement-card {
+    min-height: auto;
+    padding: 1.25rem;
+  }
 }
+

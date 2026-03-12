@@ -120,9 +120,16 @@
 
     startRotatingTyping(hero.dynamicItems);
 
-    // Sections
+    // Sections (skip hardcoded sections)
     Object.keys(sectionContents).forEach(key => {
-      if (sectionContents[key]) {
+      if (
+        sectionContents[key] &&
+        key !== "about" &&
+        key !== "education" &&
+        key !== "publications" &&
+        key !== "skills" &&
+        key !== "events"
+      ) {
         sectionContents[key].textContent = data.sections[key];
       }
     });
