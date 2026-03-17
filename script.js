@@ -324,9 +324,10 @@
   function setupContactForm() {
     const form = document.getElementById("contact-form");
     const status = document.getElementById("contact-form-status");
+    const submitButton = form?.querySelector("button[type='submit']");
     if (!form || !status) return;
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!form.checkValidity()) {
         form.reportValidity();
@@ -334,9 +335,43 @@
         status.className = "form-status is-error";
         return;
       }
-      status.textContent = "Thank you. Your message has been prepared for delivery.";
-      status.className = "form-status is-success";
-      form.reset();
+
+      const formData = new FormData(form);
+      formData.append("_subject", "Portfolio Contact Form Submission");
+      formData.append("_captcha", "false");
+      formData.append("_template", "table");
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+      }
+
+      status.textContent = "Sending your message...";
+      status.className = "form-status";
+
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/nurnabi.ihc@gmail.com", {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (!response.ok) throw new Error("Submission failed");
+
+        status.textContent = "Thank you. Your message has been sent successfully.";
+        status.className = "form-status is-success";
+        form.reset();
+      } catch {
+        status.textContent = "Message could not be sent. Please try again in a moment.";
+        status.className = "form-status is-error";
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = "Send Message";
+        }
+      }
     });
   }
 
@@ -346,5 +381,16 @@
 
   window.addEventListener("portfolioUpdated", (event) => {
     renderAll(event.detail || store.getData());
+  });
+
+  window.addEventListener("storage", (event) => {
+    if (event.key !== store.STORAGE_KEY || !event.newValue) return;
+
+    try {
+      const nextData = JSON.parse(event.newValue);
+      renderAll(store.normalizeData(nextData));
+    } catch {
+      renderAll(store.getData());
+    }
   });
 })();
