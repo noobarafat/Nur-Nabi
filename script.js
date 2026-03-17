@@ -25,8 +25,16 @@
   const typingState = {
     timer: null,
     pause: null,
-    index: 0
+    index: 0,
+    deleting: false,
+    holdTicks: 0
   };
+
+  function listOrDefault(sectionPath, list) {
+    return Array.isArray(list) && list.length
+      ? list
+      : store.defaultData?.[sectionPath]?.items || [];
+  }
 
   function updateNav(data) {
     document.getElementById("navbar-logo").textContent = data.general.logoText;
@@ -42,27 +50,30 @@
 
     const queue = Array.isArray(items) && items.length ? items : [""];
     typingState.index = 0;
+    typingState.deleting = false;
+    typingState.holdTicks = 0;
 
-    const typeOne = () => {
-      const text = queue[typingState.index];
-      let charIndex = 0;
-      heroRefs.dynamic.textContent = "";
+    typingState.timer = window.setInterval(() => {
+      const text = queue[typingState.index] || "";
+      const current = heroRefs.dynamic.textContent || "";
 
-      typingState.timer = window.setInterval(() => {
-        if (charIndex <= text.length) {
-          heroRefs.dynamic.textContent = text.slice(0, charIndex);
-          charIndex += 1;
-          return;
+      if (!typingState.deleting) {
+        heroRefs.dynamic.textContent = text.slice(0, current.length + 1);
+        if (heroRefs.dynamic.textContent === text) {
+          typingState.holdTicks += 1;
+          if (typingState.holdTicks >= 12) {
+            typingState.deleting = true;
+            typingState.holdTicks = 0;
+          }
         }
-        window.clearInterval(typingState.timer);
-        typingState.pause = window.setTimeout(() => {
+      } else {
+        heroRefs.dynamic.textContent = text.slice(0, Math.max(0, current.length - 1));
+        if (!heroRefs.dynamic.textContent.length) {
+          typingState.deleting = false;
           typingState.index = (typingState.index + 1) % queue.length;
-          typeOne();
-        }, 1400);
-      }, 42);
-    };
-
-    typeOne();
+        }
+      }
+    }, 62);
   }
 
   function renderHero(data) {
@@ -102,12 +113,14 @@
 
   function renderAbout(data) {
     document.getElementById("about-title").textContent = data.about.title;
-    document.getElementById("about-content").innerHTML = data.about.items.map(cardTemplate).join("");
+    const items = listOrDefault("about", data.about.items);
+    document.getElementById("about-content").innerHTML = items.map(cardTemplate).join("");
   }
 
   function renderEducation(data) {
     document.getElementById("education-title").textContent = data.education.title;
-    document.getElementById("education-content").innerHTML = data.education.items.map((item) => `
+    const items = listOrDefault("education", data.education.items);
+    document.getElementById("education-content").innerHTML = items.map((item) => `
       <article class="education-card">
         <h3 class="education-card__degree">${item.degree}</h3>
         <p class="education-card__department">${item.department}</p>
@@ -127,7 +140,8 @@
       <div class="summary-chip"><span class="summary-chip__label">Books</span><span class="summary-chip__value">${data.publications.summary.books}</span></div>
     `;
 
-    document.getElementById("publications-content").innerHTML = data.publications.items.map((item) => {
+    const items = listOrDefault("publications", data.publications.items);
+    document.getElementById("publications-content").innerHTML = items.map((item) => {
       const isStatus = item.type === "Accepted Article" || item.type === "Submitted Article";
       const badgeClass = isStatus ? "badge badge--alt" : "badge";
       const metaBits = [
@@ -155,7 +169,8 @@
   function renderMemberships(data) {
     document.getElementById("memberships-title").textContent = data.memberships.title;
     document.getElementById("memberships-subtitle").textContent = data.memberships.subtitle;
-    document.getElementById("memberships-content").innerHTML = data.memberships.items.map((item) => `
+    const items = listOrDefault("memberships", data.memberships.items);
+    document.getElementById("memberships-content").innerHTML = items.map((item) => `
       <article class="membership-card">
         <span class="badge">${item.label}</span>
         <h3 class="membership-card__title">${item.title}</h3>
@@ -172,7 +187,8 @@
       <div class="summary-chip"><span class="summary-chip__label">Certificates & Recognition</span><span class="summary-chip__value">${data.achievements.summary.certificates}</span></div>
     `;
 
-    document.getElementById("achievements-content").innerHTML = data.achievements.items.map((item) => `
+    const items = listOrDefault("achievements", data.achievements.items);
+    document.getElementById("achievements-content").innerHTML = items.map((item) => `
       <article class="achievement-card ${item.featured ? "achievement-card--featured" : ""}">
         <span class="badge">${item.label}</span>
         <h3 class="achievement-card__title">${item.title}</h3>
@@ -188,16 +204,42 @@
     document.getElementById("leadership-activities-title").textContent = model.leadershipTitle;
     document.getElementById("interests-title").textContent = model.interestsTitle;
 
-    document.getElementById("leadership-content").innerHTML = model.items.map((item) => `
+    const leadershipItems = Array.isArray(model.items) && model.items.length ? model.items : store.defaultData.leadershipInterests.items;
+    const interests = Array.isArray(model.interests) && model.interests.length ? model.interests : store.defaultData.leadershipInterests.interests;
+
+    document.getElementById("leadership-content").innerHTML = leadershipItems.map((item) => `
       <li class="leadership-item">
         <span class="leadership-item__label">${item.category}</span>
         <p class="leadership-item__text">${item.text}</p>
       </li>
     `).join("");
 
-    document.getElementById("interests-content").innerHTML = model.interests.map((interest) => `
+    document.getElementById("interests-content").innerHTML = interests.map((interest) => `
       <span class="interest-chip">${interest}</span>
     `).join("");
+  }
+
+  function isLikelyUrl(value) {
+    return /^https?:\/\//i.test(String(value || "").trim());
+  }
+
+  function renderContactValue(label, value) {
+    const safe = String(value || "").trim();
+    if (!safe) return "N/A";
+
+    if (label === "Email") {
+      return `<a href="mailto:${safe}">${safe}</a>`;
+    }
+
+    if (label === "Phone") {
+      return `<a href="tel:${safe.replace(/\s+/g, "")}">${safe}</a>`;
+    }
+
+    if (isLikelyUrl(safe)) {
+      return `<a href="${safe}" target="_blank" rel="noopener noreferrer">${safe}</a>`;
+    }
+
+    return safe;
   }
 
   function renderContact(data) {
@@ -221,7 +263,7 @@
         <span class="contact-row__icon">${icon}</span>
         <div>
           <p class="contact-row__label">${label}</p>
-          <p class="contact-row__value">${value}</p>
+          <p class="contact-row__value">${renderContactValue(label, value)}</p>
         </div>
       </li>
     `).join("");
@@ -242,6 +284,27 @@
     renderLeadershipInterests(data);
     renderContact(data);
     renderFooter(data);
+    setupScrollReveal();
+  }
+
+  function setupScrollReveal() {
+    const targets = document.querySelectorAll(
+      ".section__header, .summary-strip, .info-card, .education-card, .pub-card, .membership-card, .achievement-card, .panel, .leadership-item, .interest-chip, .contact-row"
+    );
+
+    targets.forEach((el) => {
+      el.classList.add("reveal");
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16, rootMargin: "0px 0px -40px 0px" });
+
+    targets.forEach((el) => observer.observe(el));
   }
 
   function setupNavbarInteractions() {

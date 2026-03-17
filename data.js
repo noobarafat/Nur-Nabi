@@ -342,7 +342,14 @@
 
   function mergeDefaults(target, defaults) {
     if (Array.isArray(defaults)) {
-      return Array.isArray(target) ? target : deepClone(defaults);
+      if (!Array.isArray(target) || target.length === 0) {
+        return deepClone(defaults);
+      }
+
+      return target.map((item, index) => {
+        const model = defaults[Math.min(index, defaults.length - 1)];
+        return mergeDefaults(item, model);
+      });
     }
     if (!defaults || typeof defaults !== "object") {
       return target ?? defaults;
@@ -356,7 +363,19 @@
   }
 
   function normalizeData(raw) {
-    return mergeDefaults(raw, defaultData);
+    const merged = mergeDefaults(raw, defaultData);
+
+    // Keep key display sections populated even if a user saved empty arrays.
+    if (!merged.about.items.length) merged.about.items = deepClone(defaultData.about.items);
+    if (!merged.education.items.length) merged.education.items = deepClone(defaultData.education.items);
+    if (!merged.publications.items.length) merged.publications.items = deepClone(defaultData.publications.items);
+    if (!merged.memberships.items.length) merged.memberships.items = deepClone(defaultData.memberships.items);
+    if (!merged.achievements.items.length) merged.achievements.items = deepClone(defaultData.achievements.items);
+    if (!merged.leadershipInterests.items.length) merged.leadershipInterests.items = deepClone(defaultData.leadershipInterests.items);
+    if (!merged.leadershipInterests.interests.length) merged.leadershipInterests.interests = deepClone(defaultData.leadershipInterests.interests);
+    if (!merged.hero.dynamicItems.length) merged.hero.dynamicItems = deepClone(defaultData.hero.dynamicItems);
+
+    return merged;
   }
 
   function getData() {

@@ -2,6 +2,40 @@
   const store = window.PortfolioStore;
   if (!store) return;
 
+  const AUTH_KEY = "nurnabi_admin_authenticated";
+  const REQUIRED_PASSWORD = "1234";
+
+  const loginView = document.getElementById("admin-login");
+  const loginForm = document.getElementById("admin-login-form");
+  const loginError = document.getElementById("admin-login-error");
+
+  function isAuthenticated() {
+    return sessionStorage.getItem(AUTH_KEY) === "true";
+  }
+
+  if (!isAuthenticated()) {
+    document.body.classList.add("is-locked");
+    loginView?.classList.remove("is-hidden");
+
+    loginForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(loginForm);
+      const password = String(formData.get("password") || "").trim();
+
+      if (password !== REQUIRED_PASSWORD) {
+        if (loginError) loginError.textContent = "Incorrect password.";
+        return;
+      }
+
+      sessionStorage.setItem(AUTH_KEY, "true");
+      window.location.reload();
+    });
+    return;
+  }
+
+  document.body.classList.remove("is-locked");
+  loginView?.classList.add("is-hidden");
+
   let state = store.deepClone(store.getData());
 
   const panelTitle = document.getElementById("panel-title");
@@ -50,6 +84,10 @@
     toastEl.style.borderColor = isError ? "rgba(180,80,96,0.65)" : "rgba(107,44,63,0.45)";
     toastEl.classList.add("is-visible");
     window.setTimeout(() => toastEl.classList.remove("is-visible"), 1800);
+  }
+
+  function confirmAction(message) {
+    return window.confirm(message);
   }
 
   function activatePanel(target) {
@@ -104,6 +142,7 @@
   function renderRepeatItems(items, schema, title) {
     return `
       <div class="repeat-list">
+        ${!items.length ? `<p class="repeat-empty">No items yet. Add a new item to begin.</p>` : ""}
         ${items.map((item, index) => `
           <div class="repeat-item" data-index="${index}">
             <div class="repeat-item__header">
@@ -167,10 +206,13 @@
   }
 
   function resetSection(sectionName) {
+    const sectionLabel = panelNames[sectionName] || sectionName;
+    if (!confirmAction(`Reset ${sectionLabel} to default content?`)) return;
+
     const sectionKey = sectionResetMap[sectionName] || sectionName;
     state[sectionKey] = store.deepClone(store.defaultData[sectionKey]);
     renderAllPanels();
-    showToast(`${panelNames[sectionName] || sectionKey} reset`);
+    showToast(`${sectionLabel} reset`);
   }
 
   function panelByName(name) {
@@ -529,10 +571,15 @@
 
   function renderSettingsPanel() {
     const panel = panelByName("settings");
+    const quickResetButtons = Object.keys(sectionResetMap).map((key) => `
+      <button class="btn btn--ghost" type="button" data-quick-reset="${key}">Reset ${panelNames[key]}</button>
+    `).join("");
+
     panel.innerHTML = `
       <div class="panel-group">
         <h3>Data Management</h3>
-        <p style="color:#d4ccc4; margin-bottom:0.75rem;">Reset individual sections from their own panel, or use global reset here to restore all defaults.</p>
+        <p class="settings-note">Reset individual sections from their own panel, use quick resets below, or restore all default content at once.</p>
+        <div class="inline-actions">${quickResetButtons}</div>
         <div class="inline-actions">
           <button class="btn btn--primary" type="button" id="reset-all-data">Reset All Content</button>
           <button class="btn btn--ghost" type="button" id="clear-legacy-data">Clear Legacy Key</button>
@@ -540,7 +587,12 @@
       </div>
     `;
 
+    panel.querySelectorAll("[data-quick-reset]").forEach((button) => {
+      button.addEventListener("click", () => resetSection(button.dataset.quickReset));
+    });
+
     panel.querySelector("#reset-all-data")?.addEventListener("click", () => {
+      if (!confirmAction("Reset all portfolio data to defaults?")) return;
       state = store.resetData();
       renderAllPanels();
       showToast("All content reset to defaults");

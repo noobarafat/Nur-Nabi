@@ -6,10 +6,23 @@
   <title>Portfolio CMS | Md. Nur Nabi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
+  <div class="admin-login is-hidden" id="admin-login">
+    <form class="admin-login__card" id="admin-login-form" novalidate>
+      <h1>Admin Login</h1>
+      <p>Enter password to access the CMS.</p>
+      <label for="admin-password">Password</label>
+      <input id="admin-password" name="password" type="password" autocomplete="current-password" required placeholder="Password" />
+      <button type="submit" class="btn btn--primary">Login</button>
+      <p class="admin-login__hint">Password: 1234</p>
+      <p class="admin-login__error" id="admin-login-error" aria-live="polite"></p>
+      <a class="admin-login__back" href="index.html">Back to site</a>
+    </form>
+  </div>
+
   <div class="admin-layout">
     <aside class="admin-sidebar">
       <div class="admin-brand">
